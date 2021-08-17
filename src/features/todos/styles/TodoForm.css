@@ -1,0 +1,16 @@
+button{
+    border-radius: 20%;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgb(17, 49, 75);
+    color: rgb(211, 211, 211);
+    cursor: pointer;
+  }
+
+input{
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
