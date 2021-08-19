@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import "../styles/TodoForm.css";
 import {useDispatch} from "react-redux";
 import {AddTodo} from "../reducers/todosSlice";
+import {createTodo} from "../../apis/todos";
+import {Button} from 'antd';
 
 function TodoForm() {
 const [text, setText] = useState("");
@@ -16,16 +18,19 @@ const dispatch = useDispatch();
             alert("Oopss! Input can't be left blank :)");
         }
         else {
-        dispatch(AddTodo(text));
-        setText("");
+            createTodo(text).then((response) => {
+                // console.log("response.data: ", response.data);
+                dispatch(AddTodo(response.data));
+            });
+            setText("");
         }
     }
 
     return (
-        <div>
+        <div className = "addDesign">
             <input 
             type = "text" placeholder = "Input new todo item" value = {text} onChange = {handleChange}></input>
-            <button onClick = {handleAdd}>Add</button>
+            <button className = "button2" onClick = {handleAdd}>Add</button>
         </div>
     )
 }

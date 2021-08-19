@@ -1,9 +1,23 @@
-import React from 'react'
-import TodoForm from './TodoForm'
-import TodoGroup from './TodoGroup'
+import React from 'react';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import TodoForm from './TodoForm';
+import TodoGroup from './TodoGroup';
 import '../styles/TodoList.css';
+import {AddTodos} from "../reducers/todosSlice";
+import {getTodos} from "../../apis/todos";
 
 function TodoList() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        getTodos().then ((response) => {
+            // console.log("response.data: ", response.data);
+            dispatch(AddTodos(response.data));
+        })
+    }, [])
+
     return (
         <body>
         <div>

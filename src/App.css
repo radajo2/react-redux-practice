@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+.colorDesign{
+  color: rgba(17, 49, 75, 0.438);
+}
+
+.textDesign{
+  color: rgb(17, 49, 75);
+  padding-top: 10px;
+  font-family: 'Trebuchet MS';
+  text-align: center;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+  font-size: 13px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

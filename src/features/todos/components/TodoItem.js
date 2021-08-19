@@ -1,34 +1,44 @@
 import React from 'react'
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {selectTodoById, ToggleTodo, ToggleRemoveTodo} from "../reducers/todosSlice";
-import {useDispatch} from "react-redux";
 import "../styles/TodoItem.css";
+import { updateTodo, deleteTodo } from '../../apis/todos';
+import { Button } from 'antd';
 
 
 function TodoItem(props) {
-    const todo = useSelector((state) => selectTodoById(state, props.itemId));
+    const todo = useSelector(state => selectTodoById(state, props.itemId));
     const dispatch = useDispatch();
+    const todoStatus = todo.done ? "done" : "undone";
 
     function handleClick(){
-        dispatch(ToggleTodo(props.itemId))
-    }
+        updateTodo(props.itemId, {done: !todo.done}).then((response) => {
+            // console.log("response: ", response);
+            dispatch(ToggleTodo({id:props.itemId, updateTodo: response.data}));
+        });
+    };
 
     function handleTodoRemove(event){
+        deleteTodo(props.itemId).then((response) => {
+            dispatch(ToggleRemoveTodo(response.data));
+        })
         event.stopPropagation();
-        dispatch(ToggleRemoveTodo(props.itemId));
-    }
-
-    const todoStatus = todo.done ? "done" : "";
+    };
 
     return( 
-        <div>
+        <div className = "testCenter">
             <ul className = {`TodoItem-todo ${todoStatus}`} onClick = {handleClick}> 
-                <li>{todo.text} 
-                <span className = "todoRemove" onClick = {handleTodoRemove}> x </span>
-                </li>
+                <div className = "todoRemove">
+                <span>
+                {todo.text} 
+                <Button danger type="text" className = "button1" onClick = {handleTodoRemove}> x </Button>
+                </span>    
+                </div>
+
             </ul>
         </div>
         );
+//remove yung 
 }
 
 export default TodoItem;

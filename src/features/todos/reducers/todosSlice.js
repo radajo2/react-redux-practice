@@ -1,37 +1,28 @@
-import {createSlice, createEntityAdapter} from "@reduxjs/toolkit";
-import {v4 as uuid} from "uuid";
+import {createSlice, createEntityAdapter, createSelector} from "@reduxjs/toolkit";
 
 const todosAdapter = createEntityAdapter();
-const initialState = todosAdapter.getInitialState({
-    ids: ["1","2"],
-    entities: {
-        1: {
-            id: "1",
-            text: "Standup Meeting",
-            done: false,
-        },
-        2: {
-            id: "2",
-            text: "Code Review",
-            done: false,
-        },
-    },
-});
+const initialState = todosAdapter.getInitialState();
 
 const todoSlice = createSlice ({
     name: "todos",
-    initialState: initialState,
+    initialState,
     reducers: {
         AddTodo(state, action) {
-            todosAdapter.addOne(state, {
-                id: uuid(),
-                text: action.payload,
-                done: false,
-            });
+            //action.payload => response.data
+            todosAdapter.addOne(state, action.payload);
+        },
+        AddTodos(state, action) {
+            //action.payload => response.data
+            todosAdapter.addMany(state, action.payload);
         },
         ToggleTodo(state, action) {
-            const todo = state.entities[action.payload];
-            todo.done = !todo.done;
+            //action.payload
+            // const todo = state.entities[action.payload];
+            // todo.done = !todo.done;
+            todosAdapter.updateOne(state, {
+                id: action.payload.id,
+                changes: action.payload.updateTodo
+            });
         },
         ToggleRemoveTodo(state, action) {
             todosAdapter.removeOne(state, action.payload);
@@ -39,10 +30,10 @@ const todoSlice = createSlice ({
     },
 });
 
-export const {AddTodo, ToggleTodo, ToggleRemoveTodo} = todoSlice.actions;
+export const {AddTodo, ToggleTodo, ToggleRemoveTodo, AddTodos} = todoSlice.actions;
 
 export default todoSlice.reducer;
 
-export const {selectIds: selectTodoIds, selectById: selectTodoById} = todosAdapter.getSelectors(state => state.todoList);
+export const {selectAll: selectTodos, selectIds: selectTodoIds, selectById: selectTodoById} = todosAdapter.getSelectors(state => state.todoList);
 
-
+export const selectDoneList = createSelector([selectTodos], (todos) => todos.filter ((todo) => todo.done)); 
