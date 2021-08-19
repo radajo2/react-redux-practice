@@ -25,7 +25,7 @@ const todoSlice = createSlice ({
             });
         },
         ToggleRemoveTodo(state, action) {
-            todosAdapter.removeOne(state, action.payload);
+            todosAdapter.removeOne(state, action.payload.id);
         },
     },
 });

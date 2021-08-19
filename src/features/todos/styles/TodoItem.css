@@ -4,10 +4,6 @@
     text-align: center;
 }
 
-.doneDesign{
-    text-decoration:solid;
-}
-
 .testCenter{
     display: flex;
     text-align: center;
@@ -57,6 +53,21 @@ ul li:hover {
     float: right;
   }
 
-.deleteDesign{
-    color: rgba(17, 49, 75, 0.438);
+.button3{
+    text-size-adjust: 15px;
+    float:left;
+    padding-left: 15px;
   }
+
+ span.todoEdit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+    
+}
+
+span.todoEdit:hover {
+    background-color: #f44336;
+    color: white;
+}
