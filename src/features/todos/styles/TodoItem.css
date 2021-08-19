@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.doneDesign{
+    text-decoration:solid;
+}
+
 .testCenter{
     display: flex;
     text-align: center;
