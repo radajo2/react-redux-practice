@@ -12,7 +12,7 @@ function App() {
     <React.Fragment>
     <BrowserRouter>
       <ul className>
-        <ArrowLeftOutlined className = "colorDesign"/> <Link to="/" className = "textDesign">Todo Page</Link><span>.........</span>   
+        <ArrowLeftOutlined className = "colorDesign"/> <Link to="/" className = "textDesign">Todo Page</Link><span>..............................................................................................................</span>   
         <Link to="/done" className = "textDesign">Done Page</Link><ArrowRightOutlined />
       </ul>
       <Switch>

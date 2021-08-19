@@ -33,16 +33,18 @@ ul li:hover {
 }
 
 .todoRemove {
-    border-style: ridge;
+    border-style: groove;
+    border-radius: 10px;
+    border-width: 2px;
     width: 500px;
     background-color: rgba(238, 201, 215, 0.705);
-    font-family: 'Comic Sans MS';
+    font-family: "Perpetua";
     font-size: 20px;
     border-color: rgba(122, 120, 121, 0.705);;
 }
 
 .todoRemove:hover {
-    background-color: rgba(17, 49, 75, 0.438);
+    background-color: rgba(17, 49, 75, 0.342);
     color: white;
 }
 
