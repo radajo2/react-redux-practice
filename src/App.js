@@ -8,9 +8,12 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import {useEffect} from 'react';
 
 function App() {
+
     useEffect(() => {
       document.title = "Joanna";
     }, []);
+
+
   return (
     <React.Fragment>
     <BrowserRouter>
