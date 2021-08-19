@@ -4,6 +4,7 @@ import {selectTodoById, ToggleTodo, ToggleRemoveTodo} from "../reducers/todosSli
 import "../styles/TodoItem.css";
 import { updateTodo, deleteTodo } from '../../apis/todos';
 import { Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 
 function TodoItem(props) {
@@ -31,7 +32,7 @@ function TodoItem(props) {
                 <div className = "todoRemove">
                 <span>
                 {todo.text} 
-                <Button danger type="text" className = "button1" onClick = {handleTodoRemove}> x </Button>
+                <Button type="text" className = "button1" onClick = {handleTodoRemove}> <DeleteOutlined className = "deleteDesign"/> </Button>
                 </span>    
                 </div>
 

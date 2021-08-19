@@ -14,7 +14,7 @@ function App() {
   return (
     <React.Fragment>
     <BrowserRouter>
-      <ul className>
+      <ul>
         <ArrowLeftOutlined className = "colorDesign"/> <Link to="/" className = "textDesign">Todo Page</Link><span>..............................................................................................................</span>   
         <Link to="/done" className = "textDesign">Done Page </Link><ArrowRightOutlined />
       </ul>

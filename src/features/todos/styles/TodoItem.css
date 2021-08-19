@@ -52,3 +52,7 @@ ul li:hover {
     text-size-adjust: 15px;
     float: right;
   }
+
+.deleteDesign{
+    color: rgba(17, 49, 75, 0.438);
+  }
