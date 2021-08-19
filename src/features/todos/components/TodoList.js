@@ -1,6 +1,6 @@
 import React from 'react';
 import {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import TodoForm from './TodoForm';
 import TodoGroup from './TodoGroup';
 import '../styles/TodoList.css';
